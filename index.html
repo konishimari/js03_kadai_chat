@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <div>
+            主人公：<input type="text" id="input-text">
+        </div>
+        <div>
+            <textarea id="text" cols="30" rows="10"></textarea>
+            <button id="send">文章生成</button>
+        </div>
+        <div id="output" style="overflow: auto;height: 300px;"></div>
+    </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+$(function() {
+    $('#send').on('click', function() {
+        const inputText = $('#input-text').val();
+        const subjects = ['私', 'あなた', 'ドラえもん', '山崎先生', 'ラブりん', '亀','まるし','らん子','よーちゃん','オリちゃん','ゆーご','つばさ','ひろあき','しょうたろう','ふみや'];
+        const places = ['宇宙', 'トイレ', '脳内', '深夜の海', '愛するLab15', '水中','森の奥深く','仮想現実','映画館','冷蔵庫','原宿駅のホーム'];
+        const things = [' スイカ', ' スマホ', ' 人魚の涙', ' 動物占い', 'Why me?', '堅い意志','輝ける未来'];
+        const actions = ['転んだ', '踊り狂った', '破壊した', '忘れてしまったの？', '消失した', '浮かれ続けた','盗んだらしい','キスした','食べた','ピタゴラスイッチした'];
+        
+        const subject = inputText || subjects[Math.floor(Math.random() * subjects.length)];
+        const place = places[Math.floor(Math.random() * places.length)];
+        const thing = things[Math.floor(Math.random() * things.length)];
+        const action = actions[Math.floor(Math.random() * actions.length)];
+        
+        const sentence = `${subject}は_${place}で_${thing}を_${action}。`;
+        $('#output').append(sentence + '<br>');
+    });
+    console.log(sentence);
+});
+</script>
+    
+</body>
+</html>
